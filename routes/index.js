@@ -76,8 +76,8 @@ router.get("/all/:country/:city", function (req, res, next) {
         const sort1 = val1.sort();
         console.log(sort1[0]);
         console.log(sort1[sort1.length-1]); 
-        const low1 = sort1[0];
-        const high1 = sort1[sort1.length-1];
+        const low1 = parseInt(sort1[0]);
+        const high1 = parseInt(sort1[sort1.length-1]);
        
         // time 2
       for(var i =6; i<12; i++) {
@@ -87,8 +87,8 @@ router.get("/all/:country/:city", function (req, res, next) {
         const sort2 = val2.sort();
         console.log(sort2[0]);
         console.log(sort2[sort2.length-1]); 
-        const low2 = sort2[0];
-        const high2 = sort2[sort2.length-1];
+        const low2 =parseInt( sort2[0]);
+        const high2 = parseInt(sort2[sort2.length-1]);
         // time 3 
       for(var i =12; i<18; i++) {
           console.log(forecast[0].hour[i].temp_c);
@@ -97,8 +97,8 @@ router.get("/all/:country/:city", function (req, res, next) {
         const sort3 = val3.sort();
         console.log(sort3[0]);
         console.log(sort3[sort3.length-1]); 
-        const low3 = sort3[0];
-        const high3 = sort3[sort3.length-1];
+        const low3 = parseInt(sort3[0]);
+        const high3 =parseInt(sort3[sort3.length-1]);
         // time4
         for(var i =18; i<24; i++) {
           console.log(forecast[0].hour[i].temp_c);
@@ -107,8 +107,8 @@ router.get("/all/:country/:city", function (req, res, next) {
         const sort4 = val4.sort();
         console.log(sort4[0]);
         console.log(sort4[sort4.length-1]); 
-        const low4 = sort4[0];
-        const high4 = sort4[sort4.length-1];
+        const low4 = parseInt(sort4[0]);
+        const high4 = parseInt(sort4[sort4.length-1]);
 
         res.render("index", { High1: high1, low1 : low1,High2:high2,low2:low2, High3:high3,low3:low3,High4:high4,low4:low4});
         
