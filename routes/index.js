@@ -42,24 +42,29 @@ router.get("/all/:country/:city", function (req, res, next) {
   var city = req.params.city;
   axios
     .get(
-      "http://api.weatherapi.com/v1/current.json?key=24fd1c53215c4f9dbc195356212812&q=" +
+      "http://api.weatherapi.com/v1/history.json?key=159b46b7b5244dc38cc111920212812&q=" +
         country +
         "&q=" +
         city +
-        "&aqi=no"
+        "&dt=2021-12-27"
     )
     .then((response) => {
       console.log(response.data);
       var jsonObject = JSON.stringify(response.data);
       console.log(jsonObject);
       var object = JSON.parse(jsonObject);
-
-      console.log(object);
+      var forecast = object.forecast.forecastday
+      
+      console.log(forecast);
       console.log(Object.keys(object));
-
+      for(var i =0; i<24; i++) {
+        console.log(forecast[0].hour[i].temp_c);
+        
+      }
+            
+      res.render("index", { High: object.location.name });
     
-      res.render("index", { High: object.current.temp_c });
-      res.render("index", { Low: object.current.temp_c });
+      // res.render("index", { High: object.current.temp_c });
     })
     .catch((error) => {
       console.log(error);
