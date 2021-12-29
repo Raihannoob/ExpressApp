@@ -3,8 +3,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title, test}
+  //- h1= title
+  //- p Welcome to #{title, test}
   .bg-light.m-5(class='.container')
   .row
     // card 1
@@ -17,7 +17,7 @@ block content
           .card-body
             | December-February 
             br
-            |                             High- &nbsp;&nbsp; &nbsp;&nbsp; Low-
+            |                             High-#{High} &nbsp;&nbsp; &nbsp;&nbsp; Low-
           .card-footer
             .dropdown
               button.dropbtn Fahrenheit

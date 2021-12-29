@@ -50,28 +50,22 @@ router.get("/all/:country/:city", function (req, res, next) {
     )
     .then((response) => {
       console.log(response.data);
-      console.log(response.data);
       var jsonObject = JSON.stringify(response.data);
       console.log(jsonObject);
       var object = JSON.parse(jsonObject);
 
-      console.log(object.keys);
+      console.log(object);
+      console.log(Object.keys(object));
 
-      // for (x in object) {
-      //   res.render("index", { title: object[x].name, test: object[x].country });
-      //   // res.render("index", { title: object[x].country });
-      // }
-      // for (x in object) {
-      res.render("index", { title: object.current.cloud });
-      //}
-
-      // res.render("index", { title: "" + Object.keys(object) });
+    
+      res.render("index", { High: object.current.temp_c });
+      res.render("index", { Low: object.current.temp_c });
     })
     .catch((error) => {
       console.log(error);
     });
 });
 
-// module.exports = app;
+
 
 module.exports = router;
