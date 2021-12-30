@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var axios = require("axios").default;
 
+
 // for country
 router.get("/all/:country", function (req, res, next) {
   var country = req.params.country;
