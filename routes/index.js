@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var axios = require("axios").default;
-
+const fs = require('fs');
 
 // for country
 router.get("/all/:country", function (req, res, next) {
@@ -23,6 +23,50 @@ router.get("/all/:country", function (req, res, next) {
       console.log(Object.keys(object));
       const countryfetch =object.location.country;
       console.log(countryfetch);
+
+      var path = 'api-data.json';
+
+      // Declare a buffer and write the
+      // data in the buffer
+      let buffer = new Buffer.from(jsonObject);
+
+      // The fs.open() method takes a "flag"
+      // as the second argument. If the file
+      // does not exist, an empty file is
+      // created. 'a' stands for append mode
+      // which means that if the program is
+      // run multiple time data will be
+      // appended to the output file instead
+      // of overwriting the existing data.
+      fs.open(path, 'r+', function (err, fd) {
+
+        // If the output file does not exists
+        // an error is thrown else data in the
+        // buffer is written to the output file
+        if (err) {
+          console.log('Cant open file');
+        } else {
+          fs.write(fd, buffer, 0, buffer.length,
+            null, function (err, writtenbytes) {
+              if (err) {
+                console.log('Cant write to file');
+              } else {
+                console.log(writtenbytes +
+                  ' characters added to file');
+              }
+            });
+          fs.close(fd, function (err) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('File closed successfully');
+            }
+          });
+        }
+      });
+
+
+
     
       const val1 = [];
       const val2 = [];
@@ -148,8 +192,52 @@ router.get("/all/:country/:city", function (req, res, next) {
       const cityfetch =object.location.name;
       console.log(countryfetch);
       console.log(cityfetch)
+      
+
      
       if(cityfetch.includes(city)){
+
+
+      var path = 'api-data.json';
+
+      // Declare a buffer and write the
+      // data in the buffer
+      let buffer = new Buffer.from(jsonObject);
+
+      // The fs.open() method takes a "flag"
+      // as the second argument. If the file
+      // does not exist, an empty file is
+      // created. 'a' stands for append mode
+      // which means that if the program is
+      // run multiple time data will be
+      // appended to the output file instead
+      // of overwriting the existing data.
+      fs.open(path, 'r+', function (err, fd) {
+
+        // If the output file does not exists
+        // an error is thrown else data in the
+        // buffer is written to the output file
+        if (err) {
+          console.log('Cant open file');
+        } else {
+          fs.write(fd, buffer, 0, buffer.length,
+            null, function (err, writtenbytes) {
+              if (err) {
+                console.log('Cant write to file');
+              } else {
+                console.log(writtenbytes +
+                  ' characters added to file');
+              }
+            });
+          fs.close(fd, function (err) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('File closed successfully');
+            }
+          });
+        }
+      });
 
       const val1 = [];
       const val2 = [];
