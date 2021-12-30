@@ -1,41 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var axios = require("axios").default;
-/* GET home page. */
-// router.get("/", function (req, res, next) {
-//   var country = "Bangladesh";
-//   var city = "Dhaka";
-//   axios
-//     .get(
-//       "http://api.weatherapi.com/v1/current.json?key=24fd1c53215c4f9dbc195356212812&q=" +
-//         country +
-//         "&q=" +
-//         city +
-//         "&aqi=no"
-//     )
-//     .then((response) => {
-//       console.log(response.data);
-//       console.log(response.data);
-//       var jsonObject = JSON.stringify(response.data);
-//       console.log(jsonObject);
-//       var object = JSON.parse(jsonObject);
 
-//       console.log(object.keys);
-
-//       // for (x in object) {
-//       //   res.render("index", { title: object[x].name, test: object[x].country });
-//       //   // res.render("index", { title: object[x].country });
-//       // }
-//       // for (x in object) {
-//       res.render("index", { title: object.current.cloud });
-//       //}
-
-//       // res.render("index", { title: "" + Object.keys(object) });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// });
 
 router.get("/all/:country/:city", function (req, res, next) {
   var country = req.params.country;
@@ -57,6 +23,13 @@ router.get("/all/:country/:city", function (req, res, next) {
       
       console.log(forecast);
       console.log(Object.keys(object));
+      const countryfetch =object.location.country;
+      const cityfetch =object.location.name;
+      console.log(countryfetch);
+      console.log(cityfetch)
+     
+      if(cityfetch == city){
+
       const val1 = [];
       const val2 = [];
       const val3 = [];
@@ -155,7 +128,10 @@ router.get("/all/:country/:city", function (req, res, next) {
           const lowf4 = parseInt(sortf4[0]);
           const highf4 = parseInt(sortf4[sortf4.length-1]);
         res.render("index", { High1: high1, low1 : low1,High2:high2,low2:low2, High3:high3,low3:low3,High4:high4,low4:low4,Highf1:highf1,lowf1:lowf1,Highf2:highf2,lowf2:lowf2,Highf3:highf3,lowf3:lowf3,Highf4:highf4,lowf4:lowf4 });
-        
+    }
+    else{
+      res.send('Error Found 404!wrong search');
+    }
     })
     .catch((error) => {
       console.log(error);
