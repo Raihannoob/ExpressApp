@@ -8,7 +8,7 @@ router.get("/all/:country/:city", function (req, res, next) {
   var city = req.params.city;
   axios
     .get(
-      "http://api.weatherapi.com/v1/history.json?key=159b46b7b5244dc38cc111920212812&q=" +
+      "http://api.weatherapi.com/v1/history.json?key=c092d3298f9541f9bbd51343213012&q=" +
         country +
         "&q=" +
         city +
@@ -28,7 +28,7 @@ router.get("/all/:country/:city", function (req, res, next) {
       console.log(countryfetch);
       console.log(cityfetch)
      
-      if(cityfetch == city){
+      if(cityfetch.includes(city)){
 
       const val1 = [];
       const val2 = [];
@@ -39,14 +39,7 @@ router.get("/all/:country/:city", function (req, res, next) {
       const far2 = [];
       const far3 = [];
       const far4 = [];
-      // for(var i =0; i<24; i++) {
-      //   console.log(forecast[0].hour[i].temp_c);
-      //   val1.push(forecast[0].hour[i].temp_c)
-      // }
-      // const sort1 = val1.sort();
-      // console.log(sort1[0]);
-      // console.log(sort1[sort1.length-1]);  
-      // time range 1
+     
       for(var i =0; i<6; i++) {
           console.log(forecast[0].hour[i].temp_c);
           val1.push(forecast[0].hour[i].temp_c)
