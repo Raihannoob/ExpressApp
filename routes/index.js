@@ -24,25 +24,15 @@ router.get("/all/:country", function (req, res, next) {
       const countryfetch =object.location.country;
       console.log(countryfetch);
 
-      var path = 'api-data.json';
+      var path = 'data.json';
 
-      // Declare a buffer and write the
-      // data in the buffer
+      
       let buffer = new Buffer.from(jsonObject);
 
-      // The fs.open() method takes a "flag"
-      // as the second argument. If the file
-      // does not exist, an empty file is
-      // created. 'a' stands for append mode
-      // which means that if the program is
-      // run multiple time data will be
-      // appended to the output file instead
-      // of overwriting the existing data.
+      
       fs.open(path, 'r+', function (err, fd) {
 
-        // If the output file does not exists
-        // an error is thrown else data in the
-        // buffer is written to the output file
+       
         if (err) {
           console.log('Cant open file');
         } else {
@@ -198,25 +188,15 @@ router.get("/all/:country/:city", function (req, res, next) {
       if(cityfetch.includes(city)){
 
 
-      var path = 'api-data.json';
+      var path = 'data.json';
 
-      // Declare a buffer and write the
-      // data in the buffer
+     
       let buffer = new Buffer.from(jsonObject);
 
-      // The fs.open() method takes a "flag"
-      // as the second argument. If the file
-      // does not exist, an empty file is
-      // created. 'a' stands for append mode
-      // which means that if the program is
-      // run multiple time data will be
-      // appended to the output file instead
-      // of overwriting the existing data.
+
       fs.open(path, 'r+', function (err, fd) {
 
-        // If the output file does not exists
-        // an error is thrown else data in the
-        // buffer is written to the output file
+     
         if (err) {
           console.log('Cant open file');
         } else {
