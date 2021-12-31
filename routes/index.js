@@ -283,8 +283,6 @@ router.get("/all/:country", function (req, res, next) {
 
                 }
     
-                // console.log(locationsFromFile.name);
-                // console.log(forecastFromFile[0].hour[0]);
               }
             );
           } else {
