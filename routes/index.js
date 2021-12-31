@@ -5,6 +5,14 @@ const fs = require('fs');
 const path = 'data.json';
 
 
+router.get("/", (req, res) => {
+  res.render("all.pug");
+});
+
+router.get("/all", (req, res) => {
+  res.render("all.pug");
+});
+
 // for country
 router.get("/all/:country", function (req, res, next) {
   var country = req.params.country.toLowerCase();
