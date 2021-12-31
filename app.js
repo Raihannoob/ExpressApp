@@ -8,10 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-// for Rate Limiter
-var Limiter = require('express-rate-limiter');
-var MemoryStore = require('express-rate-limiter/lib/memoryStore');
-var limiter = new Limiter({ db: new MemoryStore() });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -22,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/',limiter.middleware({ innerTimeLimit: 10000, innerLimit: 1, headers: false}), indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
