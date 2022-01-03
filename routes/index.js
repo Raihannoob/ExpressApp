@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
 router.get("/all", (req, res) => {
   res.render("all.pug");
 });
-
 // for country
 router.get("/all/:country", function (req, res, next) {
   var country = req.params.country.toLowerCase();
@@ -163,7 +162,7 @@ router.get("/all/:country", function (req, res, next) {
                   .get(
                     "http://api.weatherapi.com/v1/history.json?key=fc00f9be98e04968a3535808213112&q=" +
                       country +
-                      "&dt=2021-12-27"
+                      "&dt=2022-01-01"
                   )
                   .then((response) => {
                     console.log(response.data);
@@ -299,7 +298,7 @@ router.get("/all/:country", function (req, res, next) {
             .get(
               "http://api.weatherapi.com/v1/history.json?key=fc00f9be98e04968a3535808213112&q=" +
                 country +
-                "&dt=2021-12-27"
+                "&dt=2022-01-01"
             )
             .then((response) => {
               console.log(response.data);
@@ -595,7 +594,7 @@ router.get("/all/:country/:city", function (req, res, next) {
                       country +
                       "&q=" +
                       city +
-                      "&dt=2021-12-27"
+                      "&dt=2022-01-01"
                   )
                   .then((response) => {
                     console.log(response.data);
@@ -735,7 +734,7 @@ router.get("/all/:country/:city", function (req, res, next) {
                 country +
                 "&q=" +
                 city +
-                "&dt=2021-12-27"
+                "&dt=2021-01-01"
             )
             .then((response) => {
               console.log(response.data);
