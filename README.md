@@ -11,7 +11,7 @@
     $npm install --save pug
     $npm install express
     $npm install express-rate-limit
-    Execution from Terminal - $npm run start
+    Execution from Terminal - $npm start
     
 
 
